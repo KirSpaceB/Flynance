@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="1" failures="0" errors="0" time="1.018">
+  <testsuite name="DashNavbar" errors="0" failures="0" skipped="0" timestamp="2023-12-30T15:01:44" time="0.715" tests="1">
+    <testcase classname="DashNavbar renders" name="DashNavbar renders" time="0.013">
+    </testcase>
+  </testsuite>
+</testsuites>

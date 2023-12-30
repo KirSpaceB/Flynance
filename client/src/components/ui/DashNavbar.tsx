@@ -2,7 +2,7 @@ import CircleCaretDown from "../../assets/svg/CircleCaretDown"
 import SearchLight from "../../assets/svg/SearchLight"
 import Flynance_Logo from "../../assets/flynancelogo.png"
 
-export default function Navbar() {
+export default function DashNavbar() {
   return (
     <div className="bg-white shadow-md">
       <nav className="container mx-auto px-6 py-3 flex justify-between items-center">

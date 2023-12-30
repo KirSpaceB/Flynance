@@ -1,4 +1,4 @@
-import Navbar from "./components/ui/dash_Navbar"
+import DashNavbar from "./components/ui/DashNavbar";
 import DashMobileNavbar from "./components/ui/dash_mobile_Navbar"
 import { useEffect, useState } from "react"
 
@@ -22,7 +22,7 @@ function App() {
   return (
     <>
       <div className="">
-        {windowWidth > mobileBreakpoint ? <Navbar /> : <DashMobileNavbar />}
+        {windowWidth > mobileBreakpoint ? <DashNavbar /> : <DashMobileNavbar />}
       </div>
     </>
   )

@@ -6,7 +6,7 @@ export default function SearchLight() {
       className="relative right-8"
     >
       <circle cx="11" cy="11" r="6" stroke="#222222"/>
-      <path d="M20 20L17 17" stroke="#222222" stroke-linecap="round"/>
+      <path d="M20 20L17 17" stroke="#222222" strokeLinecap="round"/>
     </svg>
   )
 }
