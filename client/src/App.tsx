@@ -1,3 +1,4 @@
+import DashLandingPage from "./components/ui/DashLandingPage";
 import DashNavbar from "./components/ui/DashNavbar";
 import DashMobileNavbar from "./components/ui/dash_mobile_Navbar"
 import { useEffect, useState } from "react"
@@ -23,6 +24,7 @@ function App() {
     <>
       <div className="">
         {windowWidth > mobileBreakpoint ? <DashNavbar /> : <DashMobileNavbar />}
+        <DashLandingPage/>
       </div>
     </>
   )
