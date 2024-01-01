@@ -7,11 +7,13 @@ namespace server.Controllers;
 [Route("[controller]")]
 public class UserSignUpController : ControllerBase
 {
+  // We need to encode user password and store it in database
+  // WE have to refresh everytime we update code
   [HttpPost]
   public IActionResult Post([FromBody] UserData userData)
   {
-    int[] randomArray = new int[] {1,2,3,4,5,6};
-    return Ok(randomArray);
+    Console.WriteLine("this is user data being console logged variable", userData);
+    return Ok(userData);
   }
 }
 public class UserData
