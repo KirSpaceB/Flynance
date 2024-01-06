@@ -1,7 +1,9 @@
 import { render,screen } from "@testing-library/react"
 import "@testing-library/jest-dom"
 import DashLandingPage from "../ui/DashLandingPage"
-
+// unit test web: write test for every single part of the component, then you mock dependecies
+// pull request hook // use husky
+// put the test in co-location to component * style preference
 describe("DashLandingPage Test Suite", () => {
   it('DashLandingPage Renders', () => {
     render(<DashLandingPage/>)

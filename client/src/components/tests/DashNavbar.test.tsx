@@ -1,7 +1,8 @@
 import { render,screen } from "@testing-library/react"
 import "@testing-library/jest-dom"
 import DashNavbar from "../ui/DashNavbar"
-
+jest.mock("react-router-dom")
+// we need to test the navbar being able to support more items in the future.
 describe("DashNavbar", () => {
   it("renders", () => {
     render(<DashNavbar/>)

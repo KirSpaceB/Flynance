@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="4" failures="1" errors="0" time="3.001">
-  <testsuite name="DashNavbar" errors="0" failures="0" skipped="0" timestamp="2023-12-31T16:54:14" time="1.635" tests="2">
-    <testcase classname="DashNavbar renders" name="DashNavbar renders" time="0.035">
+<testsuites name="jest tests" tests="4" failures="1" errors="0" time="2.696">
+  <testsuite name="DashLandingPage Test Suite" errors="0" failures="1" skipped="0" timestamp="2024-01-02T01:32:13" time="1.751" tests="2">
+    <testcase classname="DashLandingPage Test Suite DashLandingPage Renders" name="DashLandingPage Test Suite DashLandingPage Renders" time="0.023">
     </testcase>
-    <testcase classname="DashNavbar render input" name="DashNavbar render input" time="0.01">
-    </testcase>
-  </testsuite>
-  <testsuite name="DashLandingPage Test Suite" errors="0" failures="1" skipped="0" timestamp="2023-12-31T16:54:14" time="2.084" tests="2">
-    <testcase classname="DashLandingPage Test Suite DashLandingPage Renders" name="DashLandingPage Test Suite DashLandingPage Renders" time="0.014">
-    </testcase>
-    <testcase classname="DashLandingPage Test Suite CreatePlanButton is in the DOM" name="DashLandingPage Test Suite CreatePlanButton is in the DOM" time="0.009">
+    <testcase classname="DashLandingPage Test Suite CreatePlanButton is in the DOM" name="DashLandingPage Test Suite CreatePlanButton is in the DOM" time="0.011">
       <failure>Error: expect(received).toBeInTheDocument()
 
 received value must be an HTMLElement or an SVGElement.
@@ -17,7 +11,7 @@ Received has type:  object
 Received has value: {}
     at __EXTERNAL_MATCHER_TRAP__ (/Users/kirkflores/Documents - Kirk’s MacBook Air/Repos/Flynance/client/node_modules/expect/build/index.js:325:30)
     at Object.throwingMatcher [as toBeInTheDocument] (/Users/kirkflores/Documents - Kirk’s MacBook Air/Repos/Flynance/client/node_modules/expect/build/index.js:326:15)
-    at Object.&lt;anonymous&gt; (/Users/kirkflores/Documents - Kirk’s MacBook Air/Repos/Flynance/client/src/components/tests/DashLandingPage.test.tsx:10:41)
+    at Object.&lt;anonymous&gt; (/Users/kirkflores/Documents - Kirk’s MacBook Air/Repos/Flynance/client/src/components/tests/DashLandingPage.test.tsx:12:41)
     at Promise.then.completed (/Users/kirkflores/Documents - Kirk’s MacBook Air/Repos/Flynance/client/node_modules/jest-circus/build/utils.js:298:28)
     at new Promise (&lt;anonymous&gt;)
     at callAsyncCircusFn (/Users/kirkflores/Documents - Kirk’s MacBook Air/Repos/Flynance/client/node_modules/jest-circus/build/utils.js:231:10)
@@ -32,6 +26,12 @@ Received has value: {}
     at runTestInternal (/Users/kirkflores/Documents - Kirk’s MacBook Air/Repos/Flynance/client/node_modules/jest-runner/build/runTest.js:367:16)
     at runTest (/Users/kirkflores/Documents - Kirk’s MacBook Air/Repos/Flynance/client/node_modules/jest-runner/build/runTest.js:444:34)
     at Object.worker (/Users/kirkflores/Documents - Kirk’s MacBook Air/Repos/Flynance/client/node_modules/jest-runner/build/testWorker.js:108:12)</failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="DashNavbar" errors="0" failures="0" skipped="0" timestamp="2024-01-02T01:32:13" time="1.77" tests="2">
+    <testcase classname="DashNavbar renders" name="DashNavbar renders" time="0.019">
+    </testcase>
+    <testcase classname="DashNavbar render input" name="DashNavbar render input" time="0.008">
     </testcase>
   </testsuite>
 </testsuites>
