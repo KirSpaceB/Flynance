@@ -56,7 +56,6 @@ export default function SignupPage() {
       console.log(weatherData)
       console.log("Sending to database: ", userData)
     }
-
   }
 
   return (
