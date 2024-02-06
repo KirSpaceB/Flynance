@@ -31,18 +31,17 @@ public class UserSignUpController : ControllerBase
 
           cmd.Parameters.AddWithValue("@username", userData.UserName);
           cmd.Parameters.AddWithValue("@email", userData.UserEmail);
-          cmd.Parameters.AddWithValue("@password", userData.UserPassword);
+          cmd.Parameters.AddWithValue("@password", hashedPassword);
 
           cmd.ExecuteNonQuery();
         }
       }
 
-      return Ok("User registered successfully");
+      return Ok(new {message = "User registered successfully"});
     }
     catch (Exception e)
     {
       Console.WriteLine(e);
-      throw;
       return BadRequest("Error: " + e.Message);
     }
   }

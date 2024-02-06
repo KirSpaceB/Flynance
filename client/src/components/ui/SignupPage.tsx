@@ -1,62 +1,42 @@
 import signUpPageBackgroundImage from "../../assets/signup_page_leftimg.png"
-import { ChangeEvent, FormEvent, useState } from "react"
-import validator from 'validator';
+import { useFormik } from "formik";
+import * as Yup from "yup";
+
+// Yup validation schema
+const validationSchema = Yup.object({
+  userName: Yup.string().required('Required'),
+  userEmail: Yup.string().email('Invalid email address').required('Required'),
+  userPassword: Yup.string().required('Required'),
+});
 
 export default function SignupPage() {
-  const [userData, setUserData] = useState({
-    userName:'',
-    userEmail:'',
-    userPassword:''
-  })
 
-  const userNameHandler = (e:ChangeEvent<HTMLInputElement>) => {
-    // The reason we put parenthesis is to return an object, due to ambiguity can use parenthesis instead of double curly brackets
-    setUserData(prevState => ({
-      ...prevState,
-      userName: e.target.value
-    }))
-  }
+  // Formik hook for form handling
+  const formikHandler = useFormik({
+    initialValues: {
+      userName: "",
+      userEmail: "",
+      userPassword: "",
+    },
+    validationSchema: validationSchema,
+    onSubmit: async (values) => {
+      console.log("Sending to database these values:", values);
 
-  const userEmailHandler = (e:ChangeEvent<HTMLInputElement>) => {
-    setUserData(prevState => ({
-      ...prevState,
-      userEmail: e.target.value
-    }))
-  }
-  // I worry about the password being incorrectly encrypted here on the client side. Can't someone console log the password before being sent to the server?
-  const userPasswordHandler = (e:ChangeEvent<HTMLInputElement>) => {
-    setUserData(prevState => ({
-      ...prevState,
-      userPassword: e.target.value
-    }))
-  }
-  //SubmitEvent is not a generic. So whats the difference between a generic and a non-generic?
-  const handleSubmit = async (e:FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-      // Assuming userData.userEmail contains the email to be validated
-    const isValidEmail = validator.isEmail(userData.userEmail);
-
-    if (!isValidEmail) {
-      alert("invalid email")
-      return; // Prevent further processing if the email is invalid
-    } else if (userData.userName === '') {
-      alert("please input username")
-    } else if (userData.userPassword === '') {
-      alert("please input user password")
-    } else {
-      const response = await fetch('http://localhost:5194/UserSignUp', {
-        method:"POST",
-        mode:"cors",
-        headers: {
-          "Content-Type":"application/json"
-        },
-        body: JSON.stringify(userData)
-      })
-      const weatherData = await response.json();
-      console.log(weatherData)
-      console.log("Sending to database: ", userData)
+      try {
+        const response = await fetch('http://localhost:5194/UserSignUp', {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(values)
+        });
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.error('Error submitting form:', error);
+      }
     }
-  }
+  })
 
   return (
     <div className="w-screen h-screen flex flex-row bg-[#A46766]">
@@ -67,11 +47,44 @@ export default function SignupPage() {
         <div className="flex flex-col justify-center items-center h-screen space-y-10">
           <h1>Hi There!</h1>
           <button>Sign up with google</button>
-          <form action="" className="flex flex-col space-y-10" onSubmit={(e) => handleSubmit(e)}>
-            <input type="text" name="" id="" placeholder="Name" className="lg:w-[345px] h-[54px] bg-white rounded-xl" onChange={(e) => userNameHandler(e)}/>
-            <input type="text" name="" id="" placeholder="Email" className="lg:w-[345px] h-[54px] bg-white rounded-xl" onChange={userEmailHandler}/>
-            <input type="text" name="" id="" placeholder="Password" className="lg:w-[345px] h-[54px] bg-white rounded-xl" onChange={userPasswordHandler}/>
-            <button className="rounded-full bg-black lg:w-[230px] lg:h-[54px] lg:text-[32px] font-medium w-auto h-auto text-white text-lg" >Sign up</button>
+          <form action="" className="flex flex-col space-y-10" onSubmit={formikHandler.handleSubmit}>
+            <input
+              type="text" 
+              name="userName" 
+              placeholder="Name" 
+              className="lg:w-[345px] h-[54px] bg-white rounded-xl" 
+              onChange={formikHandler.handleChange} 
+              onBlur={formikHandler.handleBlur} 
+              value={formikHandler.values.userName}
+            />
+            {formikHandler.touched.userName && formikHandler.errors.userName ? (
+              <div>{formikHandler.errors.userName}</div>
+            ) : null}
+            <input 
+              type="text" 
+              name="userEmail" 
+              placeholder="Email" 
+              className="lg:w-[345px] h-[54px] bg-white rounded-xl" 
+              onChange={formikHandler.handleChange}
+              onBlur={formikHandler.handleBlur} 
+              value={formikHandler.values.userEmail}
+            />
+            {formikHandler.touched.userName && formikHandler.errors.userEmail ? (
+              <div>{formikHandler.errors.userEmail}</div>
+            ) : null}
+            <input 
+              type="password" 
+              name="userPassword" 
+              placeholder="Password" 
+              className="lg:w-[345px] h-[54px] bg-white rounded-xl" 
+              onChange={formikHandler.handleChange}
+              onBlur={formikHandler.handleBlur} 
+              value={formikHandler.values.userPassword}
+            />
+            {formikHandler.touched.userName && formikHandler.errors.userPassword ? (
+              <div>{formikHandler.errors.userPassword}</div>
+            ) : null}
+              <button className="rounded-full bg-black lg:w-[230px] lg:h-[54px] lg:text-[32px] font-medium w-auto h-auto text-white text-lg" >Sign up</button>
           </form>
 
         </div>
