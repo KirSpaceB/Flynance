@@ -15,7 +15,7 @@ export default function LoginPage() {
     },
     validationSchema:loginValidationSchema,
     onSubmit: (values) => {
-      console.log('login values', values)
+      //Call .NET API
     },
   })
 
