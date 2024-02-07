@@ -26,7 +26,7 @@ export default function DashNavbar() {
         <div className="flex items-center">
           <button className="px-4 py-2 text-lg font-bold text-[#1B65E9] hover:text-gray-900 focus:outline-none">Get AI Guide</button>
           <button className="px-4 py-2 text-lg font-bold text-[#1B65E9] hover:text-gray-900 focus:outline-none">Donate</button>
-          <button className="px-4 py-2 text-lg font-bold text-[#1B65E9] hover:text-gray-900 focus:outline-none">Login</button>
+          <button className="px-4 py-2 text-lg font-bold text-[#1B65E9] hover:text-gray-900 focus:outline-none" onClick={() => navigate('login')}>Login</button>
           <button className="ml-4 bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 focus:outline-none" onClick={() => navigate('signup')}>Sign up</button>
         </div>
         
