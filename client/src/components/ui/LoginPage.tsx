@@ -34,6 +34,7 @@ export default function LoginPage() {
         });
         const response:ILoginResponse = await request.json();
         console.log(response.userName)
+        // it works but is isLoggedIn is True even tho its suppose to be false when trying to log in with a user thats not in the database
         dispatch(login(response.userName))
       } catch(error) {
         console.log(error);
