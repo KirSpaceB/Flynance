@@ -4,6 +4,10 @@ import { login } from "../../actions/authActions";
 import signUpPageBackgroundImage from "../../assets/signup_page_leftimg.png"
 import * as Yup from "yup";
 
+interface ILoginResponse {
+  userName: string,
+  isLoggedIn: boolean,
+}
 
 const loginValidationSchema = Yup.object({
   email: Yup.string().email('Invalid email address').required('Required'),
@@ -28,10 +32,10 @@ export default function LoginPage() {
           },
           body: JSON.stringify(values)
         });
-        const response = await request.json();
-        console.log(response)
+        const response:ILoginResponse = await request.json();
+        console.log(response.userName)
 
-        dispatch(login(response))
+        dispatch(login(response.userName))
       } catch(error) {
         console.log(error);
       }
