@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 public class Users
 {
     public int Id { get; set; }
+    public string UserName { get; set; }
     public string UserEmail { get; set; }
     public string UserPassword { get; set; }
 }
@@ -46,7 +47,7 @@ public class UserLoginController : ControllerBase
 
         if (user == null)
         {
-            return Unauthorized(new { message = "Invalid Login Attempt: Wrong Username" });
+            return Unauthorized(new { message = "Invalid Login Attempt: No Users" });
         }
 
         bool validPassword = BCrypt.Net.BCrypt.Verify(loginDto.Password, user.UserPassword);
@@ -56,6 +57,6 @@ public class UserLoginController : ControllerBase
         }
 
 
-        return Ok(new { message = "Login Successful" });
+        return Ok(new {userName = user.UserName, isLoggedIn = true});
     }
 }
