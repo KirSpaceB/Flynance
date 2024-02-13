@@ -14,8 +14,20 @@ export default function LoginPage() {
       password:"",
     },
     validationSchema:loginValidationSchema,
-    onSubmit: (values) => {
-      //Call .NET API
+    onSubmit: async (values) => {
+      try {
+        const request = await fetch('http://localhost:5194/api/UserLogin/login', {
+          method:"POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(values)
+        });
+        const response = await request.json();
+        console.log(response)
+      } catch(error) {
+        console.log(error);
+      }
     },
   })
 
