@@ -1,6 +1,9 @@
 import { useFormik } from "formik";
+import { useDispatch } from "react-redux";
+import { login } from "../../actions/authActions";
 import signUpPageBackgroundImage from "../../assets/signup_page_leftimg.png"
 import * as Yup from "yup";
+
 
 const loginValidationSchema = Yup.object({
   email: Yup.string().email('Invalid email address').required('Required'),
@@ -8,6 +11,8 @@ const loginValidationSchema = Yup.object({
 })
 
 export default function LoginPage() {
+  const dispatch = useDispatch();
+
   const formikHandler = useFormik({
     initialValues: {
       email:"",
@@ -25,6 +30,8 @@ export default function LoginPage() {
         });
         const response = await request.json();
         console.log(response)
+
+        dispatch(login(response))
       } catch(error) {
         console.log(error);
       }
