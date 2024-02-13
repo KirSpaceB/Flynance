@@ -34,7 +34,6 @@ export default function LoginPage() {
         });
         const response:ILoginResponse = await request.json();
         console.log(response.userName)
-
         dispatch(login(response.userName))
       } catch(error) {
         console.log(error);
